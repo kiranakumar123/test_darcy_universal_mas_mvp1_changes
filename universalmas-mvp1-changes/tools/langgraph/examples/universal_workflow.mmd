@@ -1,0 +1,24 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	initialization(initialization)
+	discovery(discovery)
+	analysis(analysis)
+	generation(generation)
+	review(review)
+	delivery(delivery)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> initialization;
+	analysis --> generation;
+	discovery --> analysis;
+	generation --> review;
+	initialization --> discovery;
+	review --> delivery;
+	delivery --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

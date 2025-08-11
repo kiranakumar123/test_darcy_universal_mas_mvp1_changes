@@ -1,0 +1,105 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "universal-framework"
+version = "0.1.0"
+description = "Enterprise-grade Universal Multi-Agent System Framework"
+authors = [{name = "Universal Framework Team"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+
+[tool.coverage.run]
+source = ["src/universal_framework"]
+omit = [
+    "*/tests/*",
+    "*/venv/*",
+    "*/__pycache__/*",
+    "*/migrations/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
+show_missing = true
+fail_under = 95
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.isort]
+known-first-party = ["universal_framework"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+    "I",
+    "B",
+    "C4",
+    "UP",
+]
+ignore = ["E501"]
+
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["src"]
+addopts = [
+    "--strict-markers",
+    "--disable-warnings",
+    "--tb=short"
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "compliance: Compliance tests",
+    "performance: Performance tests",
+    "asyncio: mark test as asyncio",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "venv"]
+skips = ["B101"]
+
+[tool.universal_framework.python311_compatibility]
+# Python 3.11+ compatibility validation settings
+enforce_modern_types = true
+enforce_match_case = false  # Warning only
+enforce_exception_groups = true
+max_elif_chain_length = 3

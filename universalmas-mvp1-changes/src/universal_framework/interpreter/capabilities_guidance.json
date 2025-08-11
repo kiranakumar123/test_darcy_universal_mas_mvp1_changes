@@ -1,0 +1,80 @@
+{
+  "funnel_id": "capabilities_discovery",
+  "fsm_state": null,
+  "fsm_event": "capabilities_requested",
+  "expected_payload": "CapabilitiesContextPayload",
+  "instruction_block_reference": "capabilities_guidance",
+  "mapped_option_number": null,
+  "intent_description": "User requests information about available workflows, tools, features, deliverables, or supported actions at any point in the session.",
+  "input_recognition": {
+    "example_phrases": [
+      "What can I do?",
+      "What features are available?",
+      "Show me my options",
+      "What does this assistant support?",
+      "What are the available workflows?",
+      "List all capabilities",
+      "What tools do I have access to?",
+      "Show me all deliverables",
+      "What can you generate?",
+      "What is supported here?",
+      "What services do you offer?",
+      "Show capabilities",
+      "What’s possible in this system?",
+      "Available options?",
+      "How can you help me?",
+      "List workflows",
+      "Supported actions?",
+      "What can I ask for?",
+      "Show deliverables",
+      "I'm confused",
+      "I don't understand",
+      "Help me",
+      "I need help",
+      "What do I do next?",
+      "I'm stuck",
+      "This isn't working",
+      "I don't know what to say",
+      "Can you guide me?",
+      "I'm lost"
+    ],
+    "regex_patterns": [
+      "^(what can (i|you) do|what (features|tools|capabilities|workflows|deliverables|options) are (available|supported)|show (me )?(my )?(options|capabilities|tools|features|deliverables)|list (all )?(workflows|capabilities|options|deliverables)|what is (supported|possible)|how can (you|this) (help|assist)|supported actions|services (you|this) offer)",
+      "(?i)(help|confused|stuck|lost|don't understand|don't know|what do i do|guide me|this isn't working)"
+    ]
+  },
+  "fallback_behavior": {
+    "fallback_instruction_block": "capabilities_guidance",
+    "clarification_prompt": "I can help you with professional email generation, communication strategy planning, batch email processing, and enterprise-grade communication workflows. Would you like me to show you specific examples for your use case, or explore our main workflow types?",
+    "routing_if_failed": "await_user"
+  },
+  "rag_injections": {
+    "description": "Dynamically retrieve and summarize all workflows, tools, and deliverables available to the current user or session context. Tailor results based on user tier, current workflow, and organizational policy.",
+    "source": "session_context",
+    "capabilities_summary": {
+      "main_workflows": [
+        "Professional Email Generation",
+        "Batch Email Processing",
+        "Communication Strategy Analysis",
+        "Enterprise Compliance Management"
+      ],
+      "specialized_agents": [
+        "Requirements Collection Agent",
+        "Strategy Generation Agent", 
+        "Strategy Confirmation Agent",
+        "Email Generation Agent"
+      ],
+      "enterprise_features": [
+        "PII Detection and Redaction",
+        "Regulatory Compliance Checking",
+        "Performance Analytics",
+        "Security & Privacy Protection"
+      ]
+    }
+  },
+  "compliance_and_audit": {
+    "log_event": "capabilities_requested",
+    "retain_audit_trail": true,
+    "redact_pii_in_response": true
+  }
+}

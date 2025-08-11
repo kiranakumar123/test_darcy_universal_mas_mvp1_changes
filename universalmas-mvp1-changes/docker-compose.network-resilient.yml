@@ -1,0 +1,30 @@
+# Docker Compose override for network resilience
+# Use: docker-compose -f docker-compose.yml -f docker-compose.network-resilient.yml build
+
+version: '3.8'
+
+services:
+  universalmas:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Network resilience build arguments
+        PIP_RETRIES: 5
+        PIP_TIMEOUT: 300
+        PIP_RESUME_RETRIES: 1
+    # Override any build cache issues
+    environment:
+      - DOCKER_BUILDKIT=0
+    
+  # Development service with network resilience
+  universalmas-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        PIP_RETRIES: 5
+        PIP_TIMEOUT: 300
+        PIP_RESUME_RETRIES: 1
+    environment:
+      - DOCKER_BUILDKIT=0

@@ -1,0 +1,45 @@
+{
+  "template_type": "task_complete",
+  "title": "Task Completed Successfully",
+  "description": "Shows user that their request has been completed",
+  "ui_structure": {
+    "type": "completion_card",
+    "header": {
+      "title": "✅ Task Completed",
+      "icon": "check_circle",
+      "color": "success"
+    },
+    "body": {
+      "completion_message": "Your email has been successfully generated!",
+      "summary": {
+        "type": "list",
+        "title": "What was delivered:",
+        "items": [
+          "{{email_count}} professional email(s)",
+          "Personalized content based on your requirements",
+          "Appropriate tone and structure",
+          "Ready-to-send format"
+        ]
+      },
+      "actions": {
+        "primary": {
+          "text": "View Results",
+          "action": "show_results"
+        },
+        "secondary": {
+          "text": "Make Changes",
+          "action": "edit_request"
+        }
+      }
+    },
+    "footer": {
+      "next_steps": [
+        "Review the generated email(s)",
+        "Make any final adjustments",
+        "Copy and send when ready"
+      ]
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

@@ -1,0 +1,38 @@
+{
+  "template_type": "error_message",
+  "title": "Error Occurred",
+  "description": "Shows user when an error has occurred",
+  "ui_structure": {
+    "type": "error_card",
+    "header": {
+      "title": "⚠️ Something went wrong",
+      "icon": "error",
+      "color": "error"
+    },
+    "body": {
+      "error_type": "{{error_type}}",
+      "message": "{{error_message}}",
+      "suggested_actions": [
+        "Try rephrasing your request",
+        "Check your input for clarity",
+        "Contact support if the issue persists"
+      ],
+      "technical_details": {
+        "visible": false,
+        "content": "{{technical_error}}"
+      }
+    },
+    "actions": {
+      "primary": {
+        "text": "Try Again",
+        "action": "retry_request"
+      },
+      "secondary": {
+        "text": "Get Help",
+        "action": "contact_support"
+      }
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

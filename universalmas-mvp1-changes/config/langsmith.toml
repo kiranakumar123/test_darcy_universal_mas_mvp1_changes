@@ -1,0 +1,65 @@
+[langsmith.enterprise]
+max_retries = 3
+retry_backoff_factor = 2.0
+max_retry_backoff = 60.0
+connection_timeout_seconds = 30.0
+
+[langsmith.performance]
+max_trace_overhead_ms = 10.0
+sampling_rate = 1.0
+batch_size = 100
+batch_timeout_seconds = 5.0
+failure_threshold = 5
+recovery_timeout_seconds = 60.0
+
+[langsmith.tool_tracing]
+capture_tool_arguments = true
+capture_tool_outputs = true
+max_argument_length = 1000
+max_output_length = 2000
+redact_sensitive_tool_data = true
+
+[langsmith.reasoning_capture]
+capture_scratchpad = true
+capture_intermediate_steps = true
+max_reasoning_steps = 10
+reasoning_preview_length = 200
+include_confidence_scores = true
+
+[langsmith.cost_tracking]
+track_token_usage = true
+track_cost_attribution = true
+cost_alert_threshold_usd = 10.0
+efficiency_monitoring = true
+per_agent_cost_breakdown = true
+
+[langsmith.environments.development]
+sampling_rate = 1.0
+failure_threshold = 10
+max_trace_overhead_ms = 50.0
+capture_tool_arguments = true
+capture_scratchpad = true
+track_cost_attribution = true
+
+[langsmith.environments.staging]
+sampling_rate = 0.5
+failure_threshold = 5
+max_trace_overhead_ms = 20.0
+capture_tool_arguments = true
+capture_scratchpad = false
+track_cost_attribution = true
+
+[langsmith.environments.production]
+sampling_rate = 0.1
+failure_threshold = 3
+max_trace_overhead_ms = 5.0
+capture_tool_arguments = false
+capture_scratchpad = false
+track_cost_attribution = true
+
+[langsmith.compliance]
+privacy_level = "high"
+use_existing_pii_detector = true
+use_existing_privacy_logger = true
+redact_tool_arguments = true
+redact_reasoning_content = true

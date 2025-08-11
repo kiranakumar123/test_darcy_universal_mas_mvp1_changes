@@ -1,0 +1,39 @@
+{
+  "template_type": "help_response",
+  "title": "Available Capabilities",
+  "description": "Shows user what the system can help with",
+  "ui_structure": {
+    "type": "card_list",
+    "header": {
+      "title": "How can I help you today?",
+      "subtitle": "I can assist with the following tasks:"
+    },
+    "items": [
+      {
+        "icon": "email",
+        "title": "Professional Email Writing",
+        "description": "Generate polished emails for meetings, follow-ups, announcements, and more"
+      },
+      {
+        "icon": "batch",
+        "title": "Batch Email Processing",
+        "description": "Handle multiple email requests efficiently with consistent quality"
+      },
+      {
+        "icon": "strategy",
+        "title": "Communication Strategy",
+        "description": "Get strategic advice on email approach, timing, and messaging"
+      },
+      {
+        "icon": "template",
+        "title": "Email Templates",
+        "description": "Use pre-built templates for common scenarios or create custom ones"
+      }
+    ],
+    "footer": {
+      "text": "Just describe what you need, and I'll help you craft the perfect communication."
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

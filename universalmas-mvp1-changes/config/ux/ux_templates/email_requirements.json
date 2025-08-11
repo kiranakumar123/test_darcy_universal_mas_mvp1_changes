@@ -1,0 +1,26 @@
+{
+  "user_facing_guidance": "Please provide comprehensive details about your email including: recipients, subject line, main purpose, tone preference, key messages to convey, and any specific requirements or constraints.",
+  "structure": {
+    "recipients": "List of email recipients (can be email addresses, names, or groups)",
+    "subject": "Email subject line - should be clear and compelling",
+    "purpose": "Main purpose or objective of the email",
+    "tone": "Professional, casual, friendly, urgent, or formal tone preference",
+    "key_points": "Key messages or information to convey in the email",
+    "call_to_action": "What you want recipients to do after reading the email",
+    "deadline": "Any deadline or timeline associated with the email",
+    "sender_info": "Context about the sender or any relevant background information"
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28",
+  "examples": {
+    "recipients": ["team@company.com", "manager@company.com"],
+    "subject": "Weekly Team Update - Project Status",
+    "purpose": "Share project progress and next steps with the team",
+    "tone": "professional",
+    "key_points": ["Completed milestone 1", "Identified new risks", "Next sprint goals"],
+    "call_to_action": "Review the update and provide feedback by Friday",
+    "deadline": "2025-07-30",
+    "sender_info": "Project Manager for the Alpha Initiative"
+  },
+  "template_type": "email_requirements"
+}

@@ -1,0 +1,28 @@
+FROM python:3.11-slim as development
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Install system dependencies (add others here as needed for local dev)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy both requirements files and install all dev+prod dependencies in one step for cache efficiency
+COPY requirements.txt requirements-dev.txt ./
+RUN pip install --upgrade pip && \
+    pip install --retries 5 --timeout 300 --resume-retries -r requirements.txt -r requirements-dev.txt
+
+# Copy application code last (after deps for better build cache)
+COPY . .
+
+# **Optional:** Run pre-commit hooks (uncomment if you want automatic checks)
+# RUN pre-commit install && pre-commit run --all-files || true
+
+# Development/test command (verbose + coverage, easily overridable)
+CMD ["pytest", "-v", "--cov=universal_framework", "tests/"]

@@ -1,0 +1,21 @@
+{
+  "user_facing_guidance": "I'll help you create a professional email! To get started, let me gather some details about what you need.\n\nPlease tell me:\n\n• **Who is the recipient?** (e.g., your boss, client, team, customer)\n  - Name and title if known\n  - Internal colleague or external contact\n  - Their role/position\n\n• **What's the main purpose?** (e.g., project update, meeting request, follow-up, announcement)\n  - Meeting request\n  - Follow-up on previous conversation\n  - Project status update\n  - Formal announcement\n  - Apology/correction\n  - Information request\n\n• **Tone and urgency?**\n  - Formal/business professional\n  - Semi-formal/collaborative\n  - Casual/friendly\n  - Urgent/ASAP\n  - Apologetic\n\n• **Key details to include?**\n  - Specific deadlines or timelines\n  - Action items required\n  - Background context\n  - Attachments or references\n\n• **Do you have a draft or key points to include?** (optional)\n\nI'll help you craft the perfect message for your situation!",
+  "template_version": "2.0.0",
+  "last_updated": "2025-07-27",
+  "template_metadata": {
+    "template_type": "email_request_guidance",
+    "triggers_workflow": true,
+    "next_agent": "requirements_collector",
+    "workflow_type": "email_generation",
+    "supported_intents": ["meeting_request", "follow_up", "project_update", "announcement", "apology", "request_info", "thank_you", "introduction"],
+    "supported_tones": ["formal", "semi_formal", "casual", "urgent", "apologetic", "appreciative"],
+    "compliance_features": ["pii_detection", "audit_trail", "approval_workflows"]
+  },
+  "quick_patterns": {
+    "meeting_request": "I need to schedule a meeting with [person/team] to discuss [topic] by [deadline]",
+    "follow_up": "Following up on [previous topic] - need [specific action/response]",
+    "project_update": "Sending project status update for [project name] with [key achievements/challenges]",
+    "announcement": "Making announcement about [topic] to [audience] effective [date]",
+    "apology": "Need to apologize for [specific issue] to [recipient] with resolution"
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "version": "2.0.0",
+  "description": "Comprehensive email workflow configuration for intent classification, context extraction, and professional email generation",
+  
+  "email_workflow_patterns": {
+    "intent_classification": {
+      "regex_patterns": {
+        "meeting_request": {
+          "pattern": "\\b(schedule|book|arrange|set up|organize)\\s+(?:a\\s+)?(?:meeting|call|appointment|demo|discussion)",
+          "confidence_threshold": 0.85,
+          "description": "Requests to schedule meetings or calls"
+        },
+        "follow_up": {
+          "pattern": "\\b(follow(?:ing)?\\s+up|check(?:ing)?\\s+(?:in|on|back)|status\\s+update|any\\s+update)",
+          "confidence_threshold": 0.8,
+          "description": "Follow-up messages checking on previous communications"
+        },
+        "project_update": {
+          "pattern": "\\b(project\\s+update|progress\\s+report|status\\s+report|milestone|deliverable|timeline)",
+          "confidence_threshold": 0.82,
+          "description": "Updates on project progress or deliverables"
+        },
+        "announcement": {
+          "pattern": "\\b(announce|notify|inform|share\\s+(?:the\\s+)?news|excited\\s+to\\s+announce)",
+          "confidence_threshold": 0.83,
+          "description": "Formal announcements or notifications"
+        },
+        "apology": {
+          "pattern": "\\b(apologize|sorry|regret|mistake|error|inconvenience)",
+          "confidence_threshold": 0.8,
+          "description": "Apologies for issues or mistakes"
+        },
+        "request_info": {
+          "pattern": "\\b(request(?:ing)?|need|require|looking\\s+for|seek(?:ing)?)\\s+(?:information|details|data|clarification)",
+          "confidence_threshold": 0.81,
+          "description": "Requests for information or clarification"
+        },
+        "thank_you": {
+          "pattern": "\\b(thank\\s+you|appreciate|grateful)\\s+(?:for|your|the)",
+          "confidence_threshold": 0.79,
+          "description": "Expressions of gratitude or appreciation"
+        },
+        "introduction": {
+          "pattern": "\\b(introduce|introduction|connect(?:ing)?|referr(?:al|ed)|recommend(?:ed|ation)?)",
+          "confidence_threshold": 0.82,
+          "description": "Introductions or referrals between parties"
+        }
+      },
+      "context_keywords": {
+        "urgent": ["urgent", "asap", "urgently", "emergency", "critical", "priority"],
+        "formal": ["dear", "sincerely", "regards", "respectfully", "formal"],
+        "casual": ["hey", "hi", "hello", "cheers", "thanks"],
+        "internal": ["team", "colleague", "department", "internal", "staff"],
+        "external": ["client", "customer", "vendor", "partner", "stakeholder"],
+        "confidential": ["confidential", "private", "sensitive", "restricted"],
+        "deadline": ["deadline", "due date", "timeline", "schedule", "milestone"]
+      }
+    },
+    
+    "context_extraction": {
+      "recipient_identification": {
+        "patterns": {
+          "email_address": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+          "name_title": "\\b(?:Mr\\.|Mrs\\.|Ms\\.|Dr\\.|Prof\\.)\\s+[A-Za-z]+\\s+[A-Za-z]+",
+          "company_mention": "\\b(?:at|from|with)\\s+(?:the\\s+)?([A-Z][A-Za-z\\s]+(?:Inc|LLC|Corp|Corporation|Ltd|Limited|Company))",
+          "team_reference": "\\b(?:team|department|division)\\s+(?:of|at)\\s+([A-Z][A-Za-z\\s]+)"
+        },
+        "role_patterns": {
+          "executive": ["CEO", "CTO", "CFO", "COO", "President", "VP", "Vice President", "Director"],
+          "manager": ["Manager", "Supervisor", "Lead", "Head", "Principal"],
+          "client": ["Client", "Customer", "Account", "Partner"],
+          "technical": ["Engineer", "Developer", "Architect", "Analyst", "Specialist"],
+          "administrative": ["Assistant", "Coordinator", "Administrator", "Executive Assistant"]
+        }
+      },
+      
+      "tone_detection": {
+        "formal_indicators": ["Dear", "Sincerely", "Respectfully", "Yours faithfully", "Best regards"],
+        "semi_formal_indicators": ["Hi", "Hello", "Best", "Thanks", "Regards"],
+        "casual_indicators": ["Hey", "Yo", "Cheers", "Take care", "Later"],
+        "urgent_indicators": ["URGENT", "IMPORTANT", "ASAP", "Immediate", "Critical"],
+        "apologetic_indicators": ["Sorry", "Apologize", "Regret", "Mistake", "Error"],
+        "appreciative_indicators": ["Thank you", "Appreciate", "Grateful", "Valued"]
+      },
+      
+      "purpose_extraction": {
+        "action_items": {
+          "pattern": "\\b(?:please|can\\s+you|could\\s+you|would\\s+you)\\s+(?:\\w+\\s+)*?(?:review|approve|confirm|send|provide|complete|update|schedule|arrange)",
+          "confidence_threshold": 0.8
+        },
+        "questions": {
+          "pattern": "\\b(?:what|when|where|who|how|why)\\s+(?:\\w+\\s+)*?\\?",
+          "confidence_threshold": 0.85
+        },
+        "requests": {
+          "pattern": "\\b(?:need|require|request|looking\\s+for|seek(?:ing)?)\\s+(?:\\w+\\s+)*?(?:information|assistance|help|support|clarification)",
+          "confidence_threshold": 0.82
+        }
+      }
+    }
+  },
+
+  "professional_email_templates": {
+    "meeting_request": {
+      "structure": {
+        "greeting": "formal",
+        "opening": "brief context and purpose",
+        "body": "meeting details and agenda",
+        "call_to_action": "propose times and next steps",
+        "closing": "professional"
+      },
+      "template": "Subject: Meeting Request: {topic}\n\nDear {name},\n\nI hope this email finds you well. I would like to schedule a meeting to discuss {topic/purpose}.\n\nThis meeting would be beneficial to {reason/benefit}.\n\nI propose we meet {time_options}. The agenda would include:\n{agenda_items}\n\nPlease let me know which time works best for you, or suggest alternatives.\n\nBest regards,\n{sender_name}"
+    },
+    
+    "follow_up": {
+      "structure": {
+        "greeting": "contextual",
+        "opening": "reference previous communication",
+        "body": "status inquiry or update",
+        "call_to_action": "clear next steps",
+        "closing": "courteous"
+      },
+      "template": "Subject: Following Up: {original_topic}\n\nHi {name},\n\nI wanted to follow up on my {previous_email/meeting} from {date} regarding {topic}.\n\n{context_or_status_update}\n\nCould you please {specific_action_requested}?\n\n{timeframe_if_applicable}\n\nThank you for your time.\n\nBest regards,\n{sender_name}"
+    },
+    
+    "project_update": {
+      "structure": {
+        "greeting": "appropriate to relationship",
+        "opening": "project context",
+        "body": "progress details and milestones",
+        "call_to_action": "next steps or feedback",
+        "closing": "professional"
+      },
+      "template": "Subject: Project Update: {project_name} - {status}\n\nDear {team/stakeholder},\n\nI'm writing to provide an update on {project_name}.\n\nProgress Summary:\n{progress_details}\n\nKey Achievements:\n{achievements}\n\nUpcoming Milestones:\n{milestones}\n\n{risks_or_challenges}\n\nNext Steps:\n{next_steps}\n\nPlease let me know if you have any questions or feedback.\n\nBest regards,\n{sender_name}"
+    },
+    
+    "announcement": {
+      "structure": {
+        "greeting": "broad and inclusive",
+        "opening": "clear announcement",
+        "body": "details and impact",
+        "call_to_action": "required actions or responses",
+        "closing": "professional and welcoming"
+      },
+      "template": "Subject: {Announcement}: {topic}\n\nDear {team/colleagues/stakeholders},\n\n{clear_announcement_statement}\n\nDetails:\n{detailed_information}\n\nImpact:\n{who_affected_and_how}\n\n{required_actions}\n\nTimeline:\n{when_effective}\n\nQuestions or concerns? Please {contact_method}.\n\nBest regards,\n{sender_name}"
+    },
+    
+    "apology": {
+      "structure": {
+        "greeting": "sincere",
+        "opening": "clear apology",
+        "body": "explanation and responsibility",
+        "call_to_action": "resolution and next steps",
+        "closing": "reassuring"
+      },
+      "template": "Subject: Apology: {issue_description}\n\nDear {name},\n\nI want to sincerely apologize for {specific_issue}.\n\n{explanation_without_excuses}\n\nTo make this right, I have {actions_taken}.\n\nGoing forward, {preventive_measures}\n\n{compensation_or_resolution}\n\nI understand this has caused {impact_acknowledgment}, and I'm committed to ensuring this doesn't happen again.\n\nThank you for your patience and understanding.\n\nSincerely,\n{sender_name}"
+    }
+  },
+
+  "recipient_role_identification": {
+    "hierarchical_roles": {
+      "c_level": {
+        "titles": ["CEO", "CTO", "CFO", "COO", "CIO", "CMO", "Chief"],
+        "communication_style": "highly_formal",
+        "tone": "respectful_and_concise",
+        "priority": "high"
+      },
+      "vp_director": {
+        "titles": ["VP", "Vice President", "Director", "Senior Director"],
+        "communication_style": "formal",
+        "tone": "professional_and_respectful",
+        "priority": "high"
+      },
+      "manager": {
+        "titles": ["Manager", "Senior Manager", "Team Lead", "Head"],
+        "communication_style": "semi_formal",
+        "tone": "collaborative_and_respectful",
+        "priority": "medium"
+      },
+      "peer": {
+        "titles": ["Colleague", "Team Member", "Peer", "Associate"],
+        "communication_style": "semi_formal_to_casual",
+        "tone": "friendly_and_collaborative",
+        "priority": "medium"
+      },
+      "client": {
+        "titles": ["Client", "Customer", "Partner", "Stakeholder"],
+        "communication_style": "formal",
+        "tone": "professional_and_service_oriented",
+        "priority": "high"
+      },
+      "vendor": {
+        "titles": ["Vendor", "Supplier", "Contractor", "Consultant"],
+        "communication_style": "professional",
+        "tone": "business_like_and_clear",
+        "priority": "medium"
+      }
+    },
+    
+    "relationship_indicators": {
+      "internal": {
+        "keywords": ["team", "colleague", "department", "internal", "staff", "our company"],
+        "form_level": "reduced",
+        "shared_context": "assumed"
+      },
+      "external": {
+        "keywords": ["client", "customer", "partner", "vendor", "external", "third party"],
+        "form_level": "high",
+        "shared_context": "explained"
+      },
+      "new_contact": {
+        "keywords": ["introduction", "meet", "first time", "new connection", "referred"],
+        "form_level": "high",
+        "context_provided": "full"
+      },
+      "existing_relationship": {
+        "keywords": ["as discussed", "following up", "as promised", "continuing our conversation"],
+        "form_level": "moderate",
+        "context_provided": "brief"
+      }
+    }
+  },
+
+  "tone_and_purpose_detection": {
+    "tone_mapping": {
+      "formal": {
+        "indicators": ["Dear", "Sincerely", "Respectfully", "Yours faithfully"],
+        "language_level": "professional",
+        "sentence_structure": "complex",
+        "contractions": false
+      },
+      "semi_formal": {
+        "indicators": ["Hi", "Hello", "Best regards", "Thanks"],
+        "language_level": "professional_but_warm",
+        "sentence_structure": "moderate",
+        "contractions": "limited"
+      },
+      "casual": {
+        "indicators": ["Hey", "Hi there", "Cheers", "Take care"],
+        "language_level": "conversational",
+        "sentence_structure": "simple",
+        "contractions": true
+      },
+      "urgent": {
+        "indicators": ["URGENT", "IMPORTANT", "ASAP", "Immediate action"],
+        "language_level": "direct_and_concise",
+        "sentence_structure": "brief",
+        "priority_markers": true
+      }
+    },
+    
+    "purpose_classification": {
+      "informational": {
+        "verbs": ["inform", "notify", "update", "announce", "share"],
+        "expected_response": "acknowledgment",
+        "follow_up_required": false
+      },
+      "action_required": {
+        "verbs": ["request", "ask", "need", "require", "please"],
+        "expected_response": "action",
+        "follow_up_required": true,
+        "deadline_sensitive": true
+      },
+      "collaborative": {
+        "verbs": ["discuss", "collaborate", "brainstorm", "review", "feedback"],
+        "expected_response": "engagement",
+        "follow_up_required": true,
+        "discussion_based": true
+      },
+      "decision_making": {
+        "verbs": ["decide", "approve", "authorize", "confirm", "agree"],
+        "expected_response": "decision",
+        "follow_up_required": true,
+        "authority_level": "high"
+      }
+    }
+  },
+
+  "email_workflow_routing": {
+    "workflow_triggers": {
+      "batch_processing": {
+        "pattern": "\\b(multiple|batch|several|various)\\s+(?:emails?|messages?)",
+        "route_to": "batch_requirements_collector",
+        "priority": "batch_workflow"
+      },
+      "single_email": {
+        "pattern": "\\b(email|message|note)\\s+(?:to|for)\\s+([A-Za-z\\s]+)",
+        "route_to": "email_generator_agent",
+        "priority": "single_workflow"
+      },
+      "template_needed": {
+        "pattern": "\\b(template|format|structure|example)\\s+(?:for|of)\\s+(?:an?\\s+)?email",
+        "route_to": "template_selector",
+        "priority": "template_workflow"
+      }
+    },
+    
+    "routing_rules": {
+      "urgent_emails": {
+        "conditions": ["urgent_indicator", "deadline_within_24h", "executive_recipient"],
+        "fast_track": true,
+        "review_required": true,
+        "approval_needed": true
+      },
+      "standard_emails": {
+        "conditions": ["standard_priority", "known_recipient", "clear_purpose"],
+        "fast_track": false,
+        "review_required": false,
+        "approval_needed": false
+      },
+      "sensitive_emails": {
+        "conditions": ["confidential_indicator", "external_recipient", "financial_topic"],
+        "review_required": true,
+        "compliance_check": true,
+        "approval_needed": true
+      }
+    },
+    
+    "escalation_rules": {
+      "content_flags": {
+        "pii_detected": "privacy_officer_review",
+        "financial_data": "compliance_review",
+        "legal_implications": "legal_team_review",
+        "executive_mention": "executive_approval"
+      },
+      "tone_flags": {
+        "aggressive_language": "communications_team_review",
+        "overly_casual": "manager_review",
+        "ambiguous_purpose": "clarification_required"
+      }
+    }
+  },
+
+  "compliance_requirements": {
+    "pii_detection": {
+      "patterns": {
+        "email": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+        "phone": "\\b(?:\\+?1[-.\\s]?)?\\(?[0-9]{3}\\)?[-.\\s]?[0-9]{3}[-.\\s]?[0-9]{4}\\b",
+        "ssn": "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+        "credit_card": "\\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\\b"
+      },
+      "redaction_policy": "partial_masking",
+      "consent_required": true
+    },
+    
+    "audit_trail": {
+      "log_fields": ["sender", "recipient", "subject", "timestamp", "intent_classification", "tone_classification"],
+      "retention_period": "90_days",
+      "encryption": "required"
+    },
+    
+    "approval_workflows": {
+      "executive_communications": ["direct_manager", "communications_team"],
+      "external_communications": ["account_manager", "legal_review"],
+      "mass_communications": ["marketing_team", "legal_review", "executive_approval"]
+    }
+  },
+
+  "metadata": {
+    "version": "2.0.0",
+    "last_updated": "2025-07-27",
+    "author": "Universal Multi-Agent System Framework",
+    "description": "Comprehensive email workflow configuration for professional communication automation",
+    "compatibility": {
+      "framework_version": ">=2.0.0",
+      "python_version": ">=3.11",
+      "langchain_version": ">=0.1.0"
+    }
+  }
+}

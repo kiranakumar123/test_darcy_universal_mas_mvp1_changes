@@ -1,0 +1,50 @@
+{
+  "template_type": "strategy_response",
+  "title": "Communication Strategy",
+  "description": "Provides strategic recommendations for email communication",
+  "ui_structure": {
+    "type": "strategy_card",
+    "header": {
+      "title": "📊 Recommended Strategy",
+      "icon": "strategy",
+      "color": "info"
+    },
+    "body": {
+      "strategy_overview": {
+        "title": "For your {{email_type}} email:",
+        "key_recommendations": [
+          "{{recommendation_1}}",
+          "{{recommendation_2}}",
+          "{{recommendation_3}}"
+        ]
+      },
+      "tone_analysis": {
+        "recommended_tone": "{{tone}}",
+        "reasoning": "{{tone_reasoning}}"
+      },
+      "timing": {
+        "best_time": "{{optimal_timing}}",
+        "reasoning": "{{timing_reasoning}}"
+      },
+      "structure_preview": {
+        "sections": [
+          "{{section_1}}",
+          "{{section_2}}",
+          "{{section_3}}"
+        ]
+      }
+    },
+    "actions": {
+      "primary": {
+        "text": "Generate Email with This Strategy",
+        "action": "generate_with_strategy"
+      },
+      "secondary": {
+        "text": "Adjust Strategy",
+        "action": "modify_strategy"
+      }
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

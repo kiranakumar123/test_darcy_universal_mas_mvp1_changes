@@ -1,0 +1,48 @@
+{
+  "template_type": "clarification_request",
+  "title": "Need More Information",
+  "description": "Requests additional details from user to improve response quality",
+  "ui_structure": {
+    "type": "clarification_card",
+    "header": {
+      "title": "I need a bit more information",
+      "icon": "help_outline"
+    },
+    "body": {
+      "question": "To provide the best possible assistance, could you please clarify:",
+      "context": "This will help me tailor the response to your specific needs",
+      "required_fields": [
+        {
+          "field": "main_purpose",
+          "type": "text",
+          "label": "What's the main purpose of your email?",
+          "placeholder": "e.g., Schedule a meeting, provide project update, send announcement"
+        },
+        {
+          "field": "recipients",
+          "type": "text",
+          "label": "Who are the recipients?",
+          "placeholder": "e.g., team members, client, manager, external stakeholders"
+        },
+        {
+          "field": "tone_preference",
+          "type": "select",
+          "label": "What tone would you prefer?",
+          "options": ["Formal", "Semi-formal", "Casual", "Urgent"]
+        }
+      ]
+    },
+    "actions": {
+      "primary": {
+        "text": "Provide Details",
+        "action": "submit_clarification"
+      },
+      "secondary": {
+        "text": "Skip for now",
+        "action": "continue_without"
+      }
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

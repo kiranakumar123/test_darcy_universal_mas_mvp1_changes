@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  universal-framework:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/.pytest_cache
+      - /app/.mypy_cache
+    environment:
+      - PYTHONPATH=/app/src
+      - ENVIRONMENT=development
+    command: ["uvicorn", "universal_framework.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app/src
+    command: ["pytest", "-v", "--cov=universal_framework"]

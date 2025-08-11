@@ -1,0 +1,65 @@
+{
+  "template_type": "email_generation",
+  "title": "Generated Email Content",
+  "description": "Presents generated email content with options for customization",
+  "ui_structure": {
+    "type": "email_preview_card",
+    "header": {
+      "title": "📧 Your Generated Email",
+      "icon": "email",
+      "color": "primary"
+    },
+    "body": {
+      "email_preview": {
+        "subject": "{{email_subject}}",
+        "recipients": "{{email_recipients}}",
+        "preview": "{{email_preview}}"
+      },
+      "content": {
+        "type": "expandable",
+        "full_content": "{{email_content}}",
+        "sections": [
+          {
+            "title": "Subject Line",
+            "content": "{{email_subject}}",
+            "editable": true
+          },
+          {
+            "title": "Recipients",
+            "content": "{{email_recipients}}",
+            "editable": true
+          },
+          {
+            "title": "Email Body",
+            "content": "{{email_body}}",
+            "editable": true,
+            "format": "markdown"
+          }
+        ]
+      },
+      "quality_indicators": {
+        "tone_score": "{{tone_score}}",
+        "clarity_score": "{{clarity_score}}",
+        "professionalism_score": "{{professionalism_score}}"
+      }
+    },
+    "actions": {
+      "primary": {
+        "text": "Copy to Clipboard",
+        "action": "copy_email"
+      },
+      "secondary": [
+        {
+          "text": "Edit Content",
+          "action": "edit_email"
+        },
+        {
+          "text": "Generate Alternative",
+          "action": "regenerate"
+        }
+      ]
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

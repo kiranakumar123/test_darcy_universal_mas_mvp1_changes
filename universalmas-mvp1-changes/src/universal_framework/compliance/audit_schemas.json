@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Enterprise Audit Event Schemas",
+    "definitions": {
+        "AuditEvent": {
+            "type": "object",
+            "properties": {
+                "event_type": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "source_agent": {
+                    "type": "string"
+                },
+                "session_hash": {
+                    "type": "string"
+                },
+                "audit_id": {
+                    "type": "string"
+                },
+                "event_id": {
+                    "type": "string"
+                },
+                "fields_updated": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "details": {
+                    "type": "object"
+                }
+            },
+            "required": [
+                "event_type",
+                "timestamp"
+            ]
+        }
+    }
+}

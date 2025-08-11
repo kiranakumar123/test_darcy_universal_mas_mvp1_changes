@@ -1,0 +1,199 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Universal Framework Redis Session Contracts",
+    "version": "1.0.0",
+    "definitions": {
+        "SessionMessage": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique message identifier"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "HumanMessage",
+                        "AIMessage",
+                        "SystemMessage",
+                        "AgentMessage"
+                    ],
+                    "description": "LangChain message type"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Message content"
+                },
+                "additional_kwargs": {
+                    "type": "object",
+                    "description": "LangChain additional kwargs",
+                    "additionalProperties": true
+                },
+                "metadata": {
+                    "type": "object",
+                    "properties": {
+                        "timestamp": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "agent_name": {
+                            "type": "string"
+                        },
+                        "workflow_phase": {
+                            "type": "string",
+                            "enum": [
+                                "initialization",
+                                "discovery",
+                                "analysis",
+                                "generation",
+                                "review",
+                                "delivery",
+                                "completion"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "schema_version": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": [
+                "id",
+                "type",
+                "content",
+                "schema_version"
+            ],
+            "additionalProperties": false
+        },
+        "SessionData": {
+            "type": "object",
+            "properties": {
+                "session_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "description": "UUID4 session identifier"
+                },
+                "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Enterprise user identifier"
+                },
+                "workflow_phase": {
+                    "type": "string",
+                    "enum": [
+                        "initialization",
+                        "discovery",
+                        "analysis",
+                        "generation",
+                        "review",
+                        "delivery",
+                        "completion"
+                    ]
+                },
+                "phase_completion": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^(initialization|discovery|analysis|generation|review|delivery|completion)$": {
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "context_data": {
+                    "type": "object",
+                    "description": "Session context information",
+                    "additionalProperties": true
+                },
+                "target_deliverables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "expires_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "schema_version": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": [
+                "session_id",
+                "user_id",
+                "workflow_phase",
+                "created_at",
+                "schema_version"
+            ],
+            "additionalProperties": false
+        },
+        "SessionMetadata": {
+            "type": "object",
+            "properties": {
+                "session_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                },
+                "message_count": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "last_activity": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "use_case": {
+                    "type": "string",
+                    "enum": [
+                        "ocm_communications",
+                        "document_generation",
+                        "data_analysis",
+                        "content_creation",
+                        "process_design"
+                    ]
+                },
+                "performance_metrics": {
+                    "type": "object",
+                    "properties": {
+                        "total_execution_time": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "agent_execution_times": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "number",
+                                "minimum": 0
+                            }
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "schema_version": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "required": [
+                "session_id",
+                "message_count",
+                "last_activity",
+                "schema_version"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

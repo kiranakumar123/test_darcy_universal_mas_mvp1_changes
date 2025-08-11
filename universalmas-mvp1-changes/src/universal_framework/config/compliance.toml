@@ -1,0 +1,26 @@
+[privacy_logging]
+enabled = true
+redaction_enabled = true
+hash_session_ids = true
+
+[pii_detection]
+email_pattern = '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+phone_pattern = '\b(?:\+?1[-.\s]?)?\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}\b'
+ssn_pattern = '\b\d{3}-\d{2}-\d{4}\b'
+credit_card_pattern = '\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b'
+
+[redaction_replacements]
+email_replacement = "[EMAIL_REDACTED]"
+phone_replacement = "[PHONE_REDACTED]"
+ssn_replacement = "[SSN_REDACTED]"
+credit_card_replacement = "[CC_REDACTED]"
+
+[audit_compliance]
+gdpr_article_25 = true
+gdpr_article_32 = true
+soc2_cc6_1 = true
+iso_27001_a12 = true
+
+[hash_configuration]
+algorithm = "sha256"
+salt_rotation_hours = 24

@@ -1,0 +1,24 @@
+[enterprise_compliance]
+enabled = true
+fail_closed_validation = true
+audit_retention_hours = 168
+gdpr_compliant_logging = true
+
+[redaction_config]
+email_pattern = "***@***.***"
+phone_pattern = "***-***-****"
+ssn_pattern = "***-**-****"
+
+[audit_settings]
+hash_salt = "${COMPLIANCE_HASH_SALT}"
+log_level = "INFO"
+enterprise_logging = true
+
+[authorization_matrix]
+strict_enforcement = true
+unknown_agent_policy = "deny"
+
+[performance]
+validation_timeout_ms = 50
+max_audit_entries_per_session = 1000
+compliance_monitoring = true

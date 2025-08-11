@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "universal_workflow": "./src/universal_framework/workflow/studio_graph.py:create_workflow_graph"
+  },
+  "env": ".env",
+  "python_version": "3.11"
+}

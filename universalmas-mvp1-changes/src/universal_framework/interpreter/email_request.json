@@ -1,0 +1,159 @@
+{
+  "version": "2.0.0",
+  "description": "Email workflow patterns and configurations for intent classification and professional email generation",
+  
+  "intent_classification_patterns": {
+    "meeting_request": {
+      "patterns": [
+        "schedule.*meeting",
+        "book.*appointment",
+        "set up.*call",
+        "arrange.*discussion",
+        "meet.*to discuss"
+      ],
+      "confidence": 0.85,
+      "required_fields": ["recipient", "topic", "proposed_time"]
+    },
+    "follow_up": {
+      "patterns": [
+        "follow.*up",
+        "check.*status",
+        "any.*update",
+        "circling.*back",
+        "touch.*base"
+      ],
+      "confidence": 0.8,
+      "required_fields": ["original_topic", "timeframe"]
+    },
+    "project_update": {
+      "patterns": [
+        "project.*update",
+        "status.*report",
+        "progress.*report",
+        "milestone.*update",
+        "deliverable.*status"
+      ],
+      "confidence": 0.82,
+      "required_fields": ["project_name", "progress_summary"]
+    },
+    "announcement": {
+      "patterns": [
+        "announce.*to",
+        "share.*news",
+        "notify.*about",
+        "inform.*that",
+        "excited.*announce"
+      ],
+      "confidence": 0.83,
+      "required_fields": ["announcement_topic", "audience", "effective_date"]
+    },
+    "apology": {
+      "patterns": [
+        "apologize.*for",
+        "sorry.*about",
+        "regret.*to",
+        "mistake.*regarding",
+        "error.*in"
+      ],
+      "confidence": 0.8,
+      "required_fields": ["issue_description", "resolution_action"]
+    }
+  },
+
+  "context_extraction": {
+    "recipient_roles": {
+      "executive": ["CEO", "CTO", "CFO", "President", "VP", "Chief"],
+      "manager": ["Manager", "Director", "Supervisor", "Lead"],
+      "client": ["Client", "Customer", "Partner", "Stakeholder"],
+      "team": ["Team", "Colleague", "Department", "Staff"],
+      "vendor": ["Vendor", "Supplier", "Contractor", "Consultant"]
+    },
+    
+    "urgency_indicators": {
+      "high": ["urgent", "asap", "critical", "emergency", "priority"],
+      "medium": ["soon", "timely", "when possible", "at earliest"],
+      "low": ["when convenient", "no rush", "flexible"]
+    },
+
+    "tone_indicators": {
+      "formal": ["Dear", "Sincerely", "Respectfully", "Yours faithfully"],
+      "semi_formal": ["Hi", "Hello", "Best regards", "Thanks"],
+      "casual": ["Hey", "Hi there", "Cheers", "Take care"]
+    }
+  },
+
+  "email_templates": {
+    "meeting_request": {
+      "subject": "Meeting Request: {topic}",
+      "structure": [
+        "Greeting",
+        "Purpose statement",
+        "Meeting details",
+        "Proposed times",
+        "Next steps",
+        "Closing"
+      ]
+    },
+    "follow_up": {
+      "subject": "Following Up: {topic}",
+      "structure": [
+        "Reference previous communication",
+        "Status inquiry",
+        "Action requested",
+        "Timeline",
+        "Appreciation",
+        "Closing"
+      ]
+    },
+    "project_update": {
+      "subject": "Project Update: {project_name} - {status}",
+      "structure": [
+        "Project context",
+        "Progress summary",
+        "Key achievements",
+        "Next milestones",
+        "Risks/challenges",
+        "Next steps"
+      ]
+    }
+  },
+
+  "routing_configuration": {
+    "single_email": {
+      "trigger": "single email generation",
+      "workflow": "email_generation_workflow",
+      "agent": "email_generator_agent"
+    },
+    "batch_processing": {
+      "trigger": "multiple emails",
+      "workflow": "batch_email_workflow",
+      "agent": "batch_email_agent"
+    },
+    "template_selection": {
+      "trigger": "template needed",
+      "workflow": "template_selection_workflow",
+      "agent": "template_selector_agent"
+    }
+  },
+
+  "validation_rules": {
+    "required_fields": {
+      "all_emails": ["recipient", "subject", "purpose"],
+      "meeting_requests": ["proposed_date", "duration", "agenda"],
+      "follow_ups": ["reference_date", "action_requested"],
+      "project_updates": ["project_name", "status_summary"]
+    },
+    "compliance_checks": {
+      "pii_detection": true,
+      "tone_appropriateness": true,
+      "recipient_validation": true
+    }
+  },
+
+  "metadata": {
+    "version": "2.0.0",
+    "created": "2025-07-27",
+    "framework": "universal_multi_agent_system",
+    "file_type": "email_workflow_configuration"
+  }
+}

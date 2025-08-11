@@ -1,0 +1,35 @@
+{
+  "template_type": "progress_update",
+  "title": "Processing Progress",
+  "description": "Shows user the current processing status",
+  "ui_structure": {
+    "type": "progress_card",
+    "header": {
+      "title": "Processing your request",
+      "subtitle": "This may take a few moments"
+    },
+    "body": {
+      "progress_indicator": {
+        "type": "circular",
+        "animated": true,
+        "color": "primary"
+      },
+      "status_messages": [
+        "Analyzing your requirements...",
+        "Generating optimal strategy...",
+        "Creating email content...",
+        "Finalizing recommendations..."
+      ],
+      "estimated_time": "15-30 seconds",
+      "current_stage": "{{current_stage}}"
+    },
+    "footer": {
+      "tips": [
+        "You can continue with other tasks while I work",
+        "The result will be available in your session"
+      ]
+    }
+  },
+  "template_version": "1.0",
+  "last_updated": "2025-07-28"
+}

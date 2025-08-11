@@ -1,0 +1,303 @@
+{
+  "version": "2.0.0",
+  "last_updated": "2025-07-27",
+  "system_capabilities": {
+    "universal_workflows": {
+      "email_generation": {
+        "name": "Professional Email Generation",
+        "description": "Generate tailored, professional emails for any business context",
+        "capabilities": [
+          "Business correspondence and formal communications",
+          "Follow-up emails and meeting requests",
+          "Project updates and status reports",
+          "Customer outreach and sales communications",
+          "Internal team communications",
+          "Executive briefings and stakeholder updates"
+        ],
+        "examples": [
+          "Write a follow-up email to a client about project timeline delays",
+          "Create a meeting request for quarterly review with stakeholders",
+          "Draft a project status update for senior management",
+          "Compose a customer onboarding email sequence"
+        ],
+        "deliverables": [
+          "Fully formatted professional email",
+          "Subject line optimization",
+          "Tone-appropriate messaging",
+          "Call-to-action integration",
+          "Follow-up sequence planning"
+        ]
+      },
+      "batch_processing": {
+        "name": "Batch Email Processing",
+        "description": "Process multiple email requests or generate email campaigns",
+        "capabilities": [
+          "Bulk email generation with personalization",
+          "Campaign planning and sequencing",
+          "Template-based mass communication",
+          "Segmented audience messaging",
+          "Automated follow-up sequences"
+        ],
+        "examples": [
+          "Generate 50 personalized outreach emails for sales prospects",
+          "Create a 5-email onboarding sequence for new customers",
+          "Draft quarterly updates for all project stakeholders"
+        ],
+        "deliverables": [
+          "Complete email campaign package",
+          "Personalized email batches",
+          "Follow-up automation plan",
+          "Performance tracking setup"
+        ]
+      },
+      "strategy_analysis": {
+        "name": "Communication Strategy Analysis",
+        "description": "Analyze and optimize communication strategies for maximum impact",
+        "capabilities": [
+          "Audience analysis and segmentation",
+          "Message effectiveness evaluation",
+          "Communication channel optimization",
+          "Timing and frequency analysis",
+          "Competitive messaging analysis"
+        ],
+        "examples": [
+          "Analyze our current customer communication strategy",
+          "Evaluate the effectiveness of our quarterly update format",
+          "Optimize our project stakeholder communication plan"
+        ],
+        "deliverables": [
+          "Comprehensive strategy analysis report",
+          "Optimization recommendations",
+          "Implementation roadmap",
+          "Success metrics and KPIs"
+        ]
+      }
+    },
+    "specialized_agents": {
+      "requirements_collector": {
+        "name": "Requirements Collection Agent",
+        "description": "Intelligently gather and structure email requirements through guided conversation",
+        "capabilities": [
+          "Context-aware requirement discovery",
+          "Guided questioning for missing details",
+          "Stakeholder identification and analysis",
+          "Success criteria definition",
+          "Constraint and limitation assessment"
+        ],
+        "examples": [
+          "Help me define requirements for a product launch email",
+          "Guide me through planning a board presentation email",
+          "Structure requirements for investor update communications"
+        ],
+        "deliverables": [
+          "Structured requirements document",
+          "Stakeholder analysis matrix",
+          "Success metrics definition",
+          "Risk assessment summary"
+        ]
+      },
+      "strategy_generator": {
+        "name": "Strategy Generation Agent",
+        "description": "Develop comprehensive communication strategies based on requirements",
+        "capabilities": [
+          "Multi-channel communication planning",
+          "Message sequencing and timing",
+          "Audience-specific strategy development",
+          "Content calendar creation",
+          "Resource allocation planning"
+        ],
+        "examples": [
+          "Create a strategy for announcing company reorganization",
+          "Develop a communication plan for product launch",
+          "Plan crisis communication strategy for service outage"
+        ],
+        "deliverables": [
+          "Complete communication strategy document",
+          "Detailed implementation timeline",
+          "Resource requirements and budget",
+          "Risk mitigation strategies"
+        ]
+      },
+      "strategy_confirmation": {
+        "name": "Strategy Confirmation Agent",
+        "description": "Validate and refine communication strategies through expert review",
+        "capabilities": [
+          "Strategy effectiveness validation",
+          "Risk assessment and mitigation",
+          "Stakeholder alignment verification",
+          "Timeline feasibility analysis",
+          "Resource requirement validation"
+        ],
+        "examples": [
+          "Review our crisis communication strategy for completeness",
+          "Validate the stakeholder engagement plan for acquisition",
+          "Confirm the product launch communication timeline"
+        ],
+        "deliverables": [
+          "Strategy validation report",
+          "Risk mitigation recommendations",
+          "Refined implementation plan",
+          "Final approval checklist"
+        ]
+      },
+      "email_generator": {
+        "name": "Email Generation Agent",
+        "description": "Generate high-impact, professionally crafted emails based on strategy",
+        "capabilities": [
+          "Tone-appropriate content creation",
+          "Brand voice consistency",
+          "SEO and engagement optimization",
+          "Visual formatting and layout",
+          "A/B testing variant generation"
+        ],
+        "examples": [
+          "Generate executive summary email for board presentation",
+          "Create customer retention email with personalized offers",
+          "Draft partnership proposal email with compelling narrative"
+        ],
+        "deliverables": [
+          "Complete email with professional formatting",
+          "Subject line variations for A/B testing",
+          "Preview text optimization",
+          "Mobile-responsive layout",
+          "Follow-up email templates"
+        ]
+      }
+    },
+    "enterprise_features": {
+      "compliance_management": {
+        "name": "Enterprise Compliance",
+        "description": "Ensure all communications meet regulatory and organizational standards",
+        "capabilities": [
+          "PII detection and redaction",
+          "Regulatory compliance checking",
+          "Audit trail generation",
+          "Data retention policy enforcement",
+          "Access control and permissions"
+        ],
+        "examples": [
+          "Ensure GDPR compliance for customer communications",
+          "Generate audit-compliant board communications",
+          "Apply industry-specific regulatory standards"
+        ],
+        "deliverables": [
+          "Compliance-certified communication",
+          "Complete audit trail",
+          "Regulatory compliance report",
+          "Data handling documentation"
+        ]
+      },
+      "security_privacy": {
+        "name": "Security & Privacy Protection",
+        "description": "Advanced security measures for sensitive communications",
+        "capabilities": [
+          "End-to-end encryption planning",
+          "Secure file attachment handling",
+          "Confidentiality level assessment",
+          "Secure delivery verification",
+          "Access logging and monitoring"
+        ],
+        "examples": [
+          "Plan secure communication for merger discussions",
+          "Handle confidential board materials securely",
+          "Ensure secure customer data communication"
+        ],
+        "deliverables": [
+          "Security-assessed communication plan",
+          "Privacy impact assessment",
+          "Secure delivery protocols",
+          "Monitoring and alerting setup"
+        ]
+      },
+      "performance_monitoring": {
+        "name": "Performance Analytics",
+        "description": "Track and optimize communication effectiveness",
+        "capabilities": [
+          "Real-time performance tracking",
+          "Engagement metrics analysis",
+          "Conversion rate optimization",
+          "A/B testing results analysis",
+          "ROI measurement and reporting"
+        ],
+        "examples": [
+          "Track email campaign performance metrics",
+          "Analyze stakeholder engagement patterns",
+          "Measure communication ROI for initiatives"
+        ],
+        "deliverables": [
+          "Performance dashboard",
+          "Analytics report with insights",
+          "Optimization recommendations",
+          "ROI analysis summary"
+        ]
+      }
+    }
+  },
+  "professional_use_cases": {
+    "executive_communications": {
+      "description": "High-stakes communications for C-suite and board level",
+      "examples": [
+        "Board presentation summaries and follow-ups",
+        "Investor relations communications",
+        "Strategic initiative announcements",
+        "Crisis management communications",
+        "Stakeholder alignment messages"
+      ]
+    },
+    "sales_marketing": {
+      "description": "Revenue-generating communications and customer engagement",
+      "examples": [
+        "Sales outreach and prospect nurturing",
+        "Customer onboarding sequences",
+        "Product launch campaigns",
+        "Retention and upsell communications",
+        "Partnership development messaging"
+      ]
+    },
+    "project_management": {
+      "description": "Project and program communication management",
+      "examples": [
+        "Project status updates and reports",
+        "Stakeholder communication plans",
+        "Risk communication and mitigation",
+        "Team coordination messages",
+        "Change management communications"
+      ]
+    },
+    "customer_service": {
+      "description": "Customer support and service communications",
+      "examples": [
+        "Support ticket responses and follow-ups",
+        "Service outage communications",
+        "Customer feedback and survey campaigns",
+        "Proactive customer notifications",
+        "Escalation and resolution updates"
+      ]
+    },
+    "hr_internal": {
+      "description": "Human resources and internal corporate communications",
+      "examples": [
+        "Employee announcements and updates",
+        "Policy change communications",
+        "Training and development notifications",
+        "Performance review communications",
+        "Organizational change announcements"
+      ]
+    }
+  },
+  "getting_started": {
+    "quick_start": "To get started, simply describe what you need: \n• 'I need to write a follow-up email to a client'\n• 'Help me plan a product launch communication strategy'\n• 'Generate a board presentation summary email'\n• 'Create a customer onboarding email sequence'",
+    "guided_approach": "For complex needs, I'll guide you through:\n1. Requirements gathering and clarification\n2. Strategy development and validation\n3. Content generation and optimization\n4. Review and refinement",
+    "pro_tips": [
+      "Be specific about your audience and objectives",
+      "Mention any regulatory or compliance requirements",
+      "Include timeline constraints upfront",
+      "Specify preferred tone and brand voice",
+      "Share any existing templates or examples you'd like to build upon"
+    ]
+  },
+  "help_responses": {
+    "empty_capabilities": "I can help you with comprehensive email and communication workflows. Here are my main capabilities:\n\n🎯 **Email Generation** - Professional emails for any context\n📊 **Strategy Planning** - Complete communication strategies\n⚡ **Batch Processing** - Bulk email campaigns and sequences\n🔒 **Enterprise Compliance** - Secure, compliant communications\n📈 **Performance Analytics** - Track and optimize effectiveness\n\nWhat type of communication do you need help with?",
+    "detailed_capabilities": "I offer specialized agents for different aspects of communication:\n\n1. **Requirements Collector** - Gathers and structures your needs\n2. **Strategy Generator** - Develops comprehensive communication plans\n3. **Strategy Confirmation** - Validates and refines strategies\n4. **Email Generator** - Creates polished, professional content\n\nWould you like to start with a specific workflow, or shall I guide you through the best approach for your needs?"
+  }
+}
