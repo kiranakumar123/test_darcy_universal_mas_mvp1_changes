@@ -36,9 +36,9 @@ class DataDogMetrics:
                 except ImportError:
                     logger.info("DataDog not available, metrics disabled")
             else:
-                logger.debug("DataDog API key not configured, metrics disabled")
+                logger.info("DataDog API key not configured, metrics disabled")
         else:
-            logger.debug("DataDog metrics disabled in safe mode")
+            logger.info("DataDog metrics disabled in safe mode")
 
     def increment(
         self, metric: str, value: int = 1, tags: list[str] | None = None
@@ -48,7 +48,7 @@ class DataDogMetrics:
             try:
                 self.statsd.increment(metric, value=value, tags=tags or [])
             except Exception as e:
-                logger.debug("DataDog metric failed", error=str(e), metric=metric)
+                logger.info("DataDog metric failed", error=str(e), metric=metric)
 
     def histogram(
         self, metric: str, value: float, tags: list[str] | None = None
@@ -58,7 +58,7 @@ class DataDogMetrics:
             try:
                 self.statsd.histogram(metric, value=value, tags=tags or [])
             except Exception as e:
-                logger.debug("DataDog metric failed", error=str(e), metric=metric)
+                logger.info("DataDog metric failed", error=str(e), metric=metric)
 
     def gauge(self, metric: str, value: float, tags: list[str] | None = None) -> None:
         """Set a gauge metric."""
@@ -66,7 +66,7 @@ class DataDogMetrics:
             try:
                 self.statsd.gauge(metric, value=value, tags=tags or [])
             except Exception as e:
-                logger.debug("DataDog metric failed", error=str(e), metric=metric)
+                logger.info("DataDog metric failed", error=str(e), metric=metric)
 
 
 # Global metrics instance (lazy initialization)

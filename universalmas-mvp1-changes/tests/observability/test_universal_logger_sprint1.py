@@ -45,7 +45,7 @@ class TestUniversalLogger:
         logger.info("Test info message", extra_data="test")
         logger.error("Test error message", error_code=500)
         logger.warning("Test warning message", warning_type="config")
-        logger.debug("Test debug message", debug_level="verbose")
+    logger.info("Test debug message", debug_level="verbose")
 
         # Test with session_id (common production pattern)
         logger.info("Test with session", session_id="test_session_123")

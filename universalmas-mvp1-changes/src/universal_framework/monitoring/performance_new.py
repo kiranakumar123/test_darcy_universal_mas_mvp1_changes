@@ -35,7 +35,7 @@ class DataDogMetrics:
                 self.enabled = False
                 self.statsd = None
         else:
-            logger.debug("DataDog metrics disabled in safe mode")
+            logger.info("DataDog metrics disabled in safe mode")
 
     def increment(
         self, metric: str, value: int = 1, tags: list[str] | None = None

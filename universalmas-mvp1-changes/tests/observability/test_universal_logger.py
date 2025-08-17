@@ -23,7 +23,7 @@ class TestUniversalLoggerBasics:
         logger.info("Test info message")
         logger.error("Test error message")
         logger.warning("Test warning message")
-        logger.debug("Test debug message")
+    logger.info("Test debug message")
 
     def test_enterprise_logging_methods(self, logger):
         """Test enterprise-specific logging methods"""

@@ -76,6 +76,6 @@ def get_langsmith_config(config_path: Path | str | None = None) -> dict[str, Any
     elif feature_flags.is_safe_mode():
         # Ensure tracing is disabled in safe mode
         os.environ.pop("LANGCHAIN_TRACING_V2", None)
-        logger.debug("langsmith_tracing_disabled_safe_mode")
+    logger.info("langsmith_tracing_disabled_safe_mode")
 
     return config
