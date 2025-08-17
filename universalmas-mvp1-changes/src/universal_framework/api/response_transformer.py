@@ -567,7 +567,7 @@ class APIResponseTransformer:
         logger.info(
             f"Agent execution: {agent_name} | Session: {session_id} | Time: {execution_time_ms:.2f}ms"
         )
-    logger.info(f"Full agent response: {log_data}")
+        logger.info(f"Full agent response: {log_data}")
 
 
 if __name__ == "__main__":
