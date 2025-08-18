@@ -180,7 +180,7 @@ async def execute_workflow_hybrid(
                 debug_logger = workflow_logger
                 debug_logger.info(
                     "using_inline_session_config",
-                    session_id=current_state.get("session_id", "unknown")[:8] + "...",
+                    session_id=(current_state.get("session_id") or "unknown")[:8] + "...",
                     workflow_phase=current_state.get("workflow_phase", "not_set"),
                     source="request_context",
                 )
@@ -193,11 +193,13 @@ async def execute_workflow_hybrid(
                         )
                         debug_logger.info(
                             "stored_inline_session_config",
-                            session_id=effective_session_id[:8] + "...",
+                            session_id=(effective_session_id or "unknown")[:8] + "...",
                         )
                     except Exception as e:
                         debug_logger.warning(
-                            "failed_to_store_inline_session_config", error=str(e)
+                            "failed_to_store_inline_session_config",
+                            error=str(e),
+                            session_id=(effective_session_id or "unknown")[:8] + "...",
                         )
 
             # PRIORITY 2: Try to get existing session state from session manager (if session exists)
@@ -212,7 +214,7 @@ async def execute_workflow_hybrid(
                     debug_logger = workflow_logger
                     debug_logger.info(
                         "session_state_retrieved",
-                        session_id=request.session_id[:8] + "...",
+                        session_id=(request.session_id or "unknown")[:8] + "...",
                         state_exists=current_state is not None,
                         state_type=(
                             type(current_state).__name__ if current_state else "None"
@@ -239,7 +241,7 @@ async def execute_workflow_hybrid(
                     debug_logger = workflow_logger
                     debug_logger.warning(
                         "session_state_retrieval_failed",
-                        session_id=request.session_id[:8] + "...",
+                        session_id=(request.session_id or "unknown")[:8] + "...",
                         error=str(e),
                     )
 
@@ -259,7 +261,7 @@ async def execute_workflow_hybrid(
                 debug_logger = workflow_logger
                 debug_logger.info(
                     "new_session_initialized",
-                    session_id=effective_session_id[:8] + "...",
+                    session_id=(effective_session_id or "unknown")[:8] + "...",
                     workflow_phase="INITIALIZATION",
                     source="new_session_creation",
                 )
@@ -319,7 +321,7 @@ async def execute_workflow_hybrid(
                 debug_logger = workflow_logger
                 debug_logger.info(
                     "conversation_context_built",
-                    session_id=effective_session_id[:8] + "...",
+                    session_id=(effective_session_id or "unknown")[:8] + "...",
                     messages_count=len(conversation_state["messages"]),
                     has_history=len(conversation_state["messages"]) > 1,
                     workflow_phase=conversation_state.get("workflow_phase", "not_set"),
@@ -335,7 +337,7 @@ async def execute_workflow_hybrid(
             debug_logger = workflow_logger
             debug_logger.info(
                 "intent_classification_completed",
-                session_id=effective_session_id[:8] + "...",
+                session_id=(effective_session_id or "unknown")[:8] + "...",
                 message_type=intent_response.get("message_type", "unknown"),
                 current_phase=intent_response.get("current_phase", "not_set"),
                 state_was_passed=current_state is not None,
@@ -376,7 +378,7 @@ async def execute_workflow_hybrid(
                     logger.warning(
                         "agent_execution_logging_failed",
                         error=str(e),
-                        session_id=request.session_id,
+                        session_id=(request.session_id if 'session_id' in locals() and request.session_id else "unknown"),
                     )
 
             # If this is a help request, provide immediate response
@@ -466,14 +468,16 @@ async def execute_workflow_hybrid(
                     response_size = len(json.dumps(response_dict, default=str))
                     debug_logger.info(
                         "help_response_size",
-                        session_id=frontend_response["session_id"][:8] + "...",
+                        session_id=(frontend_response.get("session_id") or "unknown")[:8] + "...",
                         response_size_bytes=response_size,
                         message_length=len(frontend_response["message"]),
                         message_type=frontend_response["message_type"],
                     )
                 except Exception as e:
                     debug_logger.warning(
-                        "response_size_calculation_failed", error=str(e)
+                        "response_size_calculation_failed",
+                        error=str(e),
+                        session_id=(frontend_response.get("session_id") or "unknown")[:8] + "...",
                     )
 
                 return response_obj
@@ -522,7 +526,7 @@ async def execute_workflow_hybrid(
                         logger = workflow_logger
                         logger.warning(
                             "store_session_data_method_not_available",
-                            session_id=session_id,
+                            session_id=(session_id or "unknown"),
                         )
                 except Exception as e:
                     # Log warning but continue - requirements agent can work without context
@@ -531,7 +535,7 @@ async def execute_workflow_hybrid(
                     logger.warning(
                         "intent_context_storage_failed",
                         error=str(e),
-                        session_id=session_id,
+                        session_id=(session_id or "unknown"),
                     )
 
                 # Implement LangGraph conditional routing pattern for silent handoff
@@ -546,7 +550,7 @@ async def execute_workflow_hybrid(
                     logger = workflow_logger
                     logger.info(
                         "silent_handoff_direct_routing",
-                        session_id=session_id,
+                        session_id=(session_id or "unknown"),
                         next_agent="strategy_generator",
                         reason="context_sufficient",
                         recipient_confidence=context_analysis.get(
@@ -601,7 +605,7 @@ async def execute_workflow_hybrid(
                     except Exception as exc:
                         logger.error(
                             "strategy_generator_execution_failed",
-                            session_id=session_id,
+                            session_id=(session_id or "unknown"),
                             error=str(exc),
                             error_type=type(exc).__name__,
                         )
@@ -623,7 +627,7 @@ async def execute_workflow_hybrid(
                     logger = workflow_logger
                     logger.info(
                         "silent_handoff_requirements_needed",
-                        session_id=session_id,
+                        session_id=(session_id or "unknown"),
                         next_agent="requirements_collector",
                         reason="context_insufficient",
                         missing_fields=context_analysis.get("missing_fields", []),
