@@ -375,10 +375,12 @@ async def execute_workflow_hybrid(
                     # Log the error but don't break the workflow
 
                     logger = workflow_logger
+                    # Compute session_id defensively to avoid KeyError in logger
+                    sid = request.session_id if getattr(request, "session_id", None) else "unknown"
                     logger.warning(
                         "agent_execution_logging_failed",
                         error=str(e),
-                        session_id=(request.session_id if 'session_id' in locals() and request.session_id else "unknown"),
+                        session_id=sid,
                     )
 
             # If this is a help request, provide immediate response
@@ -437,12 +439,13 @@ async def execute_workflow_hybrid(
                     )
                 except Exception as e:
                     # Log the exact serialization error for debugging
+                    sid = request.session_id if getattr(request, "session_id", None) else "unknown"
                     workflow_logger.error(
                         "response_serialization_error",
                         error=str(e),
                         frontend_response_keys=list(frontend_response.keys()),
                         current_phase=current_phase,
-                        session_id=request.session_id,
+                        session_id=sid,
                     )
                     # Re-raise to trigger global exception handler
                     raise HTTPException(
@@ -603,11 +606,11 @@ async def execute_workflow_hybrid(
                         )
 
                     except Exception as exc:
-                        logger.error(
-                            "strategy_generator_execution_failed",
-                            session_id=(session_id or "unknown"),
+                        sid = (frontend_response.get("session_id") or "unknown")
+                        debug_logger.warning(
+                            "response_size_calculation_failed",
                             error=str(exc),
-                            error_type=type(exc).__name__,
+                            session_id=(sid[:8] + "...") if isinstance(sid, str) else "unknown",
                         )
                         return WorkflowExecuteResponse(
                             session_id=session_id,

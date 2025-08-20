@@ -197,7 +197,11 @@ class ModernUniversalFrameworkLogger:
 
     def warning(self, message: str, **kwargs) -> None:
         """Log warning message (sync wrapper)."""
-        session_id = kwargs.get("session_id", "default")
+        # Safely extract session_id from kwargs to avoid duplicate-key issues
+        # and to prevent callers passing non-standard mapping objects from
+        # causing KeyError during unpacking. Use pop with default so kwargs
+        # no longer contains session_id when forwarded.
+        session_id = kwargs.pop("session_id", "default")
 
         # Run async version in current event loop or create new one
         try:
@@ -209,10 +213,12 @@ class ModernUniversalFrameworkLogger:
             # No event loop running, create one
             asyncio.run(self._async_warning(message, session_id=session_id, **kwargs))
 
-    async def _async_warning(self, message: str, **kwargs) -> None:
-        """Log warning message (async)."""
-        session_id = kwargs.get("session_id", "default")
+    async def _async_warning(self, message: str, session_id: str = "default", **kwargs) -> None:
+        """Log warning message (async).
 
+        Accepts session_id explicitly (safer for callers that forward kwargs),
+        and stores remaining kwargs in metadata.
+        """
         event = LogEvent(
             timestamp=datetime.now(),
             level=LogLevel.WARNING,
